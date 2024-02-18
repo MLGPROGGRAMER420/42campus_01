@@ -40,11 +40,11 @@ int	ft_atoi(char *str)
 	}
 	return (result * sign);
 }
-/*
+
 int	main(int agrc, char *argv[])
 {
-	char	*str;
-	int		rezultat;
+	char *str;
+	int rezultat;
 
 	if (agrc != 2)
 	{
@@ -54,4 +54,4 @@ int	main(int agrc, char *argv[])
 	str = argv[1];
 	rezultat = ft_atoi(str);
 	printf("Rezultat: %d\n", rezultat);
-}*/
+}

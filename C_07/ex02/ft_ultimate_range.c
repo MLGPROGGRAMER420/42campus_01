@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmarczyn <kmarczyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlg_ubuntu_programer <mlg_ubuntu_progra    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 14:32:43 by kmarczyn          #+#    #+#             */
-/*   Updated: 2024/02/08 19:11:52 by kmarczyn         ###   ########.fr       */
+/*   Created: 2024/02/14 18:40:39 by mlg_ubuntu_       #+#    #+#             */
+/*   Updated: 2024/02/14 18:56:56 by mlg_ubuntu_      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,61 @@
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
-	int len;
+	int	size;
+	int	len;
+	int	*ptr;
 
-	i = 0;
+	size = 0;
 	len = max - min;
+	*range = (int *)malloc(sizeof(int) * (len));
 	if (min >= max)
 	{
 		*range = NULL;
-		return (-1);
+		return (0);
 	}
-
-	*range = (int *)malloc(sizeof(int) * len);
-	if (*range == NULL)
+	if (!*range)
 		return (-1);
-	while (i < len)
+	while (min < max)
 	{
-		(*range)[i] = min;
-		i++;
+		(*range)[size++] = min;
 		min++;
 	}
-	return (len);
+	return (size);
+}
+int	main(void)
+{
+	int min = 5;
+	int max = 10;
+	int *arr;
+	int arr_size;
+
+	// Wywołanie funkcji ft_ultimate_range
+	arr_size = ft_ultimate_range(&arr, min, max);
+
+	// Sprawdzenie czy alokacja pamięci się powiodła
+	if (arr_size == -1)
+	{
+		printf("Błąd alokacji pamięci.\n");
+		return (1); // Zwracamy 1, aby oznaczyć błąd
+	}
+
+	// Sprawdzenie czy zakres jest pusty
+	if (arr == NULL)
+	{
+		printf("Zakres jest pusty.\n");
+		return (0); // Zwracamy 0, zakres jest pusty
+	}
+
+	// Wyświetlenie zawartości tablicy
+	printf("Tablica zawiera elementy:\n");
+	for (int i = 0; i < arr_size; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+
+	// Zwolnienie pamięci zaalokowanej dla tablicy
+	free(arr);
+
+	return (0); // Zwracamy 0, aby oznaczyć sukces
 }
