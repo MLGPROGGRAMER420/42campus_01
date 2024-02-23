@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 int	*ft_range(int min, int max)
 {
@@ -31,12 +32,16 @@ int	main(void)
 {
 	int min = 50;
 	int max = 100;
+	int i = 0;
+	int size = max - min;
 
-	int *result = ft_range(min, max); //przypisanie naszej funckji do poitera aby móc następnie z niego skorzystać
 
-	if (result != NULL) //jeśli zostało coś zaalokowane to po wykonaniu tej funkcji zwalaniamy zaalokowane mijesce
+	int *result = ft_range(min, max);
+
+	while (i < size)
 	{
-		free(result);
+		printf("%d \n", result[i]);
+		i++;
 	}
 	return (0);
 }

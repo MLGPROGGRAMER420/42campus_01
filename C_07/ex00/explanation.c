@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   explanation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlg_ubuntu_programer <mlg_ubuntu_progra    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:25:02 by kmarczyn          #+#    #+#             */
-/*   Updated: 2024/02/23 16:23:29 by mlg_ubuntu_      ###   ########.fr       */
+/*   Updated: 2024/02/23 16:17:47 by mlg_ubuntu_      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,49 @@
 #include <stdlib.h>
 
 int	ft_str_len(char *str)
+// funkcja sprawdz długość stringa i ją zwraca
 {
-	int	i;
+	int i;
 
-	i = 0;
 	while (str[i] != '\0')
+	{
 		i++;
+	}
 	return (i);
 }
 
-char	*ft_dup(char *str)
+char	*ft_strdup(char *src)
+// funkcja duplikuje stringa
 {
-	int		i;
-	char	*dest;
+	int i;
+	char *dest; // zmienna cel
+	char *fl_dest;
 
 	i = 0;
-	dest = (char *)malloc((ft_str_len(str) + 1) * sizeof(char));
-	if (dest == NULL)
+	fl_dest = (dest = ((char *)malloc(ft_str_len(src) * sizeof(char) + 1)));
+	// alokowanie miejsca dla naszego stringa,
+	// zaalokowana pamięć to długość naszego stringa plus 1
+	if (fl_dest == NULL)
+    // jeśli nasz ostateczny cel jest równy 0 to zwraca 1
 	{
 		return (0);
 	}
-	while (str[i] != '\0')
+	while (src[i])
+    // przypisanie po kolei każdego znaku do celu 
 	{
-		dest[i] = str[i];
+		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
-	printf("s = %s \n", dest);
+	dest[i] = '\0'; // na ostatnie miejsce wpisanie terminatora
+	printf("src = %s\ndest = %s \n", src, dest);
 	return (dest);
 }
 
 int	main(void)
 {
-	char test[] = "String";
-	char *res = ft_dup(test);
+	char string[] = "TEST";
 
-	printf("s = %s \n", res);
-	free(res);
+	ft_strdup(string);
 
-	return (0);
+	printf("%s \n", string);
 }

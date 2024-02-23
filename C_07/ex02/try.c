@@ -1,59 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   try.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlg_ubuntu_programer <mlg_ubuntu_progra    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 14:54:34 by mlg_ubuntu_       #+#    #+#             */
-/*   Updated: 2024/02/23 16:51:50 by mlg_ubuntu_      ###   ########.fr       */
+/*   Created: 2024/02/23 17:11:25 by mlg_ubuntu_       #+#    #+#             */
+/*   Updated: 2024/02/23 17:27:59 by mlg_ubuntu_      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
-int	*ft_range(int min, int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
-	int	*range;
-	int	len;
+	int	res;
 
-	len = max - min;
-	range = (int *)malloc(sizeof(int) * (len));
-	if (!range)
-		return (0);
+	*range = (int *)malloc(sizeof(int) * (max - min));
 	if (min >= max)
-		return (NULL);
-	i = 0;
-	while (i < max)
 	{
-		range[i] = min;
+		*range = NULL;
+		return (0);
+	}
+	if (!*range)
+		return (-1);
+	i = 0;
+	while (min < max)
+	{
+		(*range)[i] = min;
 		i++;
 		min++;
 	}
-	return (range);
+	return (i);
 }
-
 int	main(void)
 {
-	int min = 50;
-	int max = 100;
-	int i = 0;
-	int *result = ft_range(min, max);
+	int min = 10;
+	int max = 25;
+	int *res;
+	int result;
 
-	if (!result)
-	{
-		printf("Błąd alokacji.\n");
-		return (1);
-	}
+	result = ft_ultimate_range(&res, min, max);
 
-	while (min < max)
-	{
-		printf("%d \n", result[i]);
-		i++;
-	}
-	free(result);
-	return (0);
+	printf("%d \n", result);
 }
