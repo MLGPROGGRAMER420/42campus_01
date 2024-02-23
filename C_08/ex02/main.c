@@ -3,7 +3,7 @@
 
 void ft_fun(int i)
 {
-    printf("%d", i);
+    printf("%d \n", i);
 }
 int main()
 {

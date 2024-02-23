@@ -10,6 +10,6 @@ int	main(void)
 {
 	t_point point;
 	set_point(&point);
-	printf("%d, %d", point.x, point.y);
+	printf("%d, %d \n", point.x, point.y);
 	return (0);
 }

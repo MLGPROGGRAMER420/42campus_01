@@ -6,7 +6,7 @@
 /*   By: mlg_ubuntu_programer <mlg_ubuntu_progra    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:54:34 by mlg_ubuntu_       #+#    #+#             */
-/*   Updated: 2024/02/14 15:32:28 by mlg_ubuntu_      ###   ########.fr       */
+/*   Updated: 2024/02/21 10:42:38 by mlg_ubuntu_      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ int	*ft_range(int min, int max)
 	int	i;
 	int	*range;
 	int	len;
+	int	*d;
 
 	i = 0;
 	len = max - min;
-	range = (int *)malloc(sizeof(int) * (len));
+	d = (range = (int *)malloc(sizeof(int) * (len)));
+	if (!d)
+		return (0);
 	if (min >= max)
 	{
 		range = NULL;
